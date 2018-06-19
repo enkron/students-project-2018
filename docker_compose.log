@@ -1,0 +1,272 @@
+Attaching to nginx-proxy, my_py_app, database
+[33mmy_py_app |[0m /usr/local/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py:794: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+[33mmy_py_app |[0m   'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+[33mmy_py_app |[0m Traceback (most recent call last):
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 2158, in _wrap_pool_connect
+[33mmy_py_app |[0m     return fn()
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 403, in connect
+[33mmy_py_app |[0m     return _ConnectionFairy._checkout(self)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 791, in _checkout
+[33mmy_py_app |[0m     fairy = _ConnectionRecord.checkout(pool)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 532, in checkout
+[33mmy_py_app |[0m     rec = pool._do_get()
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 1196, in _do_get
+[33mmy_py_app |[0m     self._dec_overflow()
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
+[33mmy_py_app |[0m     compat.reraise(exc_type, exc_value, exc_tb)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
+[33mmy_py_app |[0m     raise value
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 1193, in _do_get
+[33mmy_py_app |[0m     return self._create_connection()
+[32mdatabase  |[0m The files belonging to this database system will be owned by user "postgres".
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 350, in _create_connection
+[32mdatabase  |[0m This user must also own the server process.
+[32mdatabase  |[0m 
+[33mmy_py_app |[0m     return _ConnectionRecord(self)
+[32mdatabase  |[0m The database cluster will be initialized with locale "en_US.utf8".
+[32mdatabase  |[0m The default database encoding has accordingly been set to "UTF8".
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 477, in __init__
+[32mdatabase  |[0m The default text search configuration will be set to "english".
+[33mmy_py_app |[0m     self.__connect(first_connect_check=True)
+[32mdatabase  |[0m 
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 674, in __connect
+[33mmy_py_app |[0m     connection = pool._invoke_creator(self)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/strategies.py", line 106, in connect
+[33mmy_py_app |[0m     return dialect.connect(*cargs, **cparams)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 411, in connect
+[33mmy_py_app |[0m     return self.dbapi.connect(*cargs, **cparams)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/psycopg2/__init__.py", line 130, in connect
+[33mmy_py_app |[0m     conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+[33mmy_py_app |[0m psycopg2.OperationalError: could not connect to server: Connection refused
+[33mmy_py_app |[0m 	Is the server running on host "database" (172.22.0.2) and accepting
+[33mmy_py_app |[0m 	TCP/IP connections on port 5432?
+[33mmy_py_app |[0m 
+[32mdatabase  |[0m Data page checksums are disabled.
+[33mmy_py_app |[0m 
+[33mmy_py_app |[0m The above exception was the direct cause of the following exception:
+[32mdatabase  |[0m 
+[33mmy_py_app |[0m 
+[33mmy_py_app |[0m Traceback (most recent call last):
+[32mdatabase  |[0m fixing permissions on existing directory /var/lib/postgresql/data ... ok
+[32mdatabase  |[0m creating subdirectories ... ok
+[33mmy_py_app |[0m   File "/greetings_app/app.py", line 15, in <module>
+[33mmy_py_app |[0m     db.create_all()
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py", line 963, in create_all
+[33mmy_py_app |[0m     self._execute_for_all_tables(app, bind, 'create_all')
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py", line 955, in _execute_for_all_tables
+[32mdatabase  |[0m selecting default max_connections ... 100
+[32mdatabase  |[0m selecting default shared_buffers ... 128MB
+[32mdatabase  |[0m selecting dynamic shared memory implementation ... posix
+[32mdatabase  |[0m creating configuration files ... ok
+[32mdatabase  |[0m running bootstrap script ... ok
+[32mdatabase  |[0m performing post-bootstrap initialization ... ok
+[32mdatabase  |[0m syncing data to disk ... ok
+[32mdatabase  |[0m 
+[33mmy_py_app |[0m     op(bind=self.get_engine(app, bind), **extra)
+[32mdatabase  |[0m Success. You can now start the database server using:
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/sql/schema.py", line 4004, in create_all
+[32mdatabase  |[0m 
+[32mdatabase  |[0m     pg_ctl -D /var/lib/postgresql/data -l logfile start
+[33mmy_py_app |[0m     tables=tables)
+[32mdatabase  |[0m 
+[32mdatabase  |[0m 
+[32mdatabase  |[0m WARNING: enabling "trust" authentication for local connections
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1939, in _run_visitor
+[32mdatabase  |[0m You can change this by editing pg_hba.conf or using the option -A, or
+[32mdatabase  |[0m --auth-local and --auth-host, the next time you run initdb.
+[33mmy_py_app |[0m     with self._optional_conn_ctx_manager(connection) as conn:
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/contextlib.py", line 112, in __enter__
+[33mmy_py_app |[0m     return next(self.gen)
+[32mdatabase  |[0m waiting for server to start....2018-06-17 17:16:46.594 UTC [38] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+[32mdatabase  |[0m 2018-06-17 17:16:46.610 UTC [39] LOG:  database system was shut down at 2018-06-17 17:16:45 UTC
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1932, in _optional_conn_ctx_manager
+[32mdatabase  |[0m 2018-06-17 17:16:46.625 UTC [38] LOG:  database system is ready to accept connections
+[32mdatabase  |[0m  done
+[33mmy_py_app |[0m     with self.contextual_connect() as conn:
+[32mdatabase  |[0m server started
+[32mdatabase  |[0m CREATE DATABASE
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 2123, in contextual_connect
+[32mdatabase  |[0m 
+[32mdatabase  |[0m CREATE ROLE
+[33mmy_py_app |[0m     self._wrap_pool_connect(self.pool.connect, None),
+[32mdatabase  |[0m 
+[32mdatabase  |[0m 
+[32mdatabase  |[0m /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 2162, in _wrap_pool_connect
+[32mdatabase  |[0m 
+[32mdatabase  |[0m waiting for server to shut down....2018-06-17 17:16:47.179 UTC [38] LOG:  received fast shutdown request
+[33mmy_py_app |[0m     e, dialect, self)
+[32mdatabase  |[0m 2018-06-17 17:16:47.182 UTC [38] LOG:  aborting any active transactions
+[32mdatabase  |[0m 2018-06-17 17:16:47.185 UTC [38] LOG:  worker process: logical replication launcher (PID 45) exited with exit code 1
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1476, in _handle_dbapi_exception_noconnection
+[32mdatabase  |[0m 2018-06-17 17:16:47.185 UTC [40] LOG:  shutting down
+[32mdatabase  |[0m 2018-06-17 17:16:47.207 UTC [38] LOG:  database system is shut down
+[33mmy_py_app |[0m     exc_info
+[32mdatabase  |[0m  done
+[32mdatabase  |[0m server stopped
+[32mdatabase  |[0m 
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+[33mmy_py_app |[0m     reraise(type(exception), exception, tb=exc_tb, cause=cause)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+[32mdatabase  |[0m PostgreSQL init process complete; ready for start up.
+[33mmy_py_app |[0m     raise value.with_traceback(tb)
+[32mdatabase  |[0m 
+[32mdatabase  |[0m 2018-06-17 17:16:47.295 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 2158, in _wrap_pool_connect
+[32mdatabase  |[0m 2018-06-17 17:16:47.295 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+[32mdatabase  |[0m 2018-06-17 17:16:47.300 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+[33mmy_py_app |[0m     return fn()
+[32mdatabase  |[0m 2018-06-17 17:16:47.330 UTC [65] LOG:  database system was shut down at 2018-06-17 17:16:47 UTC
+[32mdatabase  |[0m 2018-06-17 17:16:47.341 UTC [1] LOG:  database system is ready to accept connections
+[32mdatabase  |[0m 2018-06-17 17:18:16.311 UTC [1] LOG:  received smart shutdown request
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 403, in connect
+[32mdatabase  |[0m 2018-06-17 17:18:16.317 UTC [1] LOG:  worker process: logical replication launcher (PID 71) exited with exit code 1
+[32mdatabase  |[0m 2018-06-17 17:18:16.318 UTC [66] LOG:  shutting down
+[33mmy_py_app |[0m     return _ConnectionFairy._checkout(self)
+[32mdatabase  |[0m 2018-06-17 17:18:16.355 UTC [1] LOG:  database system is shut down
+[32mdatabase  |[0m 2018-06-17 17:18:44.359 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 791, in _checkout
+[32mdatabase  |[0m 2018-06-17 17:18:44.359 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+[32mdatabase  |[0m 2018-06-17 17:18:44.363 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+[33mmy_py_app |[0m     fairy = _ConnectionRecord.checkout(pool)
+[32mdatabase  |[0m 2018-06-17 17:18:44.393 UTC [20] LOG:  database system was shut down at 2018-06-17 17:18:16 UTC
+[32mdatabase  |[0m 2018-06-17 17:18:44.409 UTC [1] LOG:  database system is ready to accept connections
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 532, in checkout
+[33mmy_py_app |[0m     rec = pool._do_get()
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 1196, in _do_get
+[33mmy_py_app |[0m     self._dec_overflow()
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
+[33mmy_py_app |[0m     compat.reraise(exc_type, exc_value, exc_tb)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
+[33mmy_py_app |[0m     raise value
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 1193, in _do_get
+[33mmy_py_app |[0m     return self._create_connection()
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 350, in _create_connection
+[33mmy_py_app |[0m     return _ConnectionRecord(self)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 477, in __init__
+[33mmy_py_app |[0m     self.__connect(first_connect_check=True)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 674, in __connect
+[33mmy_py_app |[0m     connection = pool._invoke_creator(self)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/strategies.py", line 106, in connect
+[33mmy_py_app |[0m     return dialect.connect(*cargs, **cparams)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 411, in connect
+[33mmy_py_app |[0m     return self.dbapi.connect(*cargs, **cparams)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/psycopg2/__init__.py", line 130, in connect
+[33mmy_py_app |[0m     conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+[33mmy_py_app |[0m sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not connect to server: Connection refused
+[33mmy_py_app |[0m 	Is the server running on host "database" (172.22.0.2) and accepting
+[33mmy_py_app |[0m 	TCP/IP connections on port 5432?
+[33mmy_py_app |[0m  (Background on this error at: http://sqlalche.me/e/e3q8)
+[33mmy_py_app |[0m /usr/local/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py:794: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+[33mmy_py_app |[0m   'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+[33mmy_py_app |[0m Traceback (most recent call last):
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 2158, in _wrap_pool_connect
+[33mmy_py_app |[0m     return fn()
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 403, in connect
+[33mmy_py_app |[0m     return _ConnectionFairy._checkout(self)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 791, in _checkout
+[33mmy_py_app |[0m     fairy = _ConnectionRecord.checkout(pool)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 532, in checkout
+[33mmy_py_app |[0m     rec = pool._do_get()
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 1196, in _do_get
+[33mmy_py_app |[0m     self._dec_overflow()
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
+[33mmy_py_app |[0m     compat.reraise(exc_type, exc_value, exc_tb)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
+[33mmy_py_app |[0m     raise value
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 1193, in _do_get
+[33mmy_py_app |[0m     return self._create_connection()
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 350, in _create_connection
+[33mmy_py_app |[0m     return _ConnectionRecord(self)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 477, in __init__
+[33mmy_py_app |[0m     self.__connect(first_connect_check=True)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 674, in __connect
+[33mmy_py_app |[0m     connection = pool._invoke_creator(self)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/strategies.py", line 106, in connect
+[33mmy_py_app |[0m     return dialect.connect(*cargs, **cparams)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 411, in connect
+[33mmy_py_app |[0m     return self.dbapi.connect(*cargs, **cparams)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/psycopg2/__init__.py", line 130, in connect
+[33mmy_py_app |[0m     conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+[33mmy_py_app |[0m psycopg2.OperationalError: could not connect to server: Connection refused
+[33mmy_py_app |[0m 	Is the server running on host "database" (172.22.0.2) and accepting
+[33mmy_py_app |[0m 	TCP/IP connections on port 5432?
+[33mmy_py_app |[0m 
+[33mmy_py_app |[0m 
+[33mmy_py_app |[0m The above exception was the direct cause of the following exception:
+[33mmy_py_app |[0m 
+[33mmy_py_app |[0m Traceback (most recent call last):
+[33mmy_py_app |[0m   File "/greetings_app/app.py", line 15, in <module>
+[33mmy_py_app |[0m     db.create_all()
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py", line 963, in create_all
+[33mmy_py_app |[0m     self._execute_for_all_tables(app, bind, 'create_all')
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py", line 955, in _execute_for_all_tables
+[33mmy_py_app |[0m     op(bind=self.get_engine(app, bind), **extra)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/sql/schema.py", line 4004, in create_all
+[33mmy_py_app |[0m     tables=tables)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1939, in _run_visitor
+[33mmy_py_app |[0m     with self._optional_conn_ctx_manager(connection) as conn:
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/contextlib.py", line 112, in __enter__
+[33mmy_py_app |[0m     return next(self.gen)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1932, in _optional_conn_ctx_manager
+[33mmy_py_app |[0m     with self.contextual_connect() as conn:
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 2123, in contextual_connect
+[33mmy_py_app |[0m     self._wrap_pool_connect(self.pool.connect, None),
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 2162, in _wrap_pool_connect
+[33mmy_py_app |[0m     e, dialect, self)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1476, in _handle_dbapi_exception_noconnection
+[33mmy_py_app |[0m     exc_info
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+[33mmy_py_app |[0m     reraise(type(exception), exception, tb=exc_tb, cause=cause)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+[33mmy_py_app |[0m     raise value.with_traceback(tb)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 2158, in _wrap_pool_connect
+[33mmy_py_app |[0m     return fn()
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 403, in connect
+[33mmy_py_app |[0m     return _ConnectionFairy._checkout(self)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 791, in _checkout
+[33mmy_py_app |[0m     fairy = _ConnectionRecord.checkout(pool)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 532, in checkout
+[33mmy_py_app |[0m     rec = pool._do_get()
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 1196, in _do_get
+[33mmy_py_app |[0m     self._dec_overflow()
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
+[33mmy_py_app |[0m     compat.reraise(exc_type, exc_value, exc_tb)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
+[33mmy_py_app |[0m     raise value
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 1193, in _do_get
+[33mmy_py_app |[0m     return self._create_connection()
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 350, in _create_connection
+[33mmy_py_app |[0m     return _ConnectionRecord(self)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 477, in __init__
+[33mmy_py_app |[0m     self.__connect(first_connect_check=True)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/pool.py", line 674, in __connect
+[33mmy_py_app |[0m     connection = pool._invoke_creator(self)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/strategies.py", line 106, in connect
+[33mmy_py_app |[0m     return dialect.connect(*cargs, **cparams)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 411, in connect
+[33mmy_py_app |[0m     return self.dbapi.connect(*cargs, **cparams)
+[33mmy_py_app |[0m   File "/usr/local/lib/python3.7/site-packages/psycopg2/__init__.py", line 130, in connect
+[33mmy_py_app |[0m     conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+[33mmy_py_app |[0m sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not connect to server: Connection refused
+[33mmy_py_app |[0m 	Is the server running on host "database" (172.22.0.2) and accepting
+[33mmy_py_app |[0m 	TCP/IP connections on port 5432?
+[33mmy_py_app |[0m  (Background on this error at: http://sqlalche.me/e/e3q8)
+[33mmy_py_app |[0m  * Serving Flask app "app" (lazy loading)
+[33mmy_py_app |[0m  * Environment: production
+[33mmy_py_app |[0m    WARNING: Do not use the development server in a production environment.
+[33mmy_py_app |[0m    Use a production WSGI server instead.
+[33mmy_py_app |[0m  * Debug mode: off
+[33mmy_py_app |[0m /usr/local/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py:794: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+[33mmy_py_app |[0m   'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+[33mmy_py_app |[0m  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+[33mmy_py_app |[0m 172.22.0.1 - - [17/Jun/2018 17:16:59] "POST / HTTP/1.1" 200 -
+[33mmy_py_app |[0m 172.22.0.1 - - [17/Jun/2018 17:17:12] "POST / HTTP/1.1" 200 -
+[33mmy_py_app |[0m  * Serving Flask app "app" (lazy loading)
+[33mmy_py_app |[0m  * Environment: production
+[33mmy_py_app |[0m    WARNING: Do not use the development server in a production environment.
+[33mmy_py_app |[0m    Use a production WSGI server instead.
+[33mmy_py_app |[0m  * Debug mode: off
+[33mmy_py_app |[0m /usr/local/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py:794: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+[33mmy_py_app |[0m   'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+[33mmy_py_app |[0m  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)

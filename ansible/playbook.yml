@@ -1,0 +1,52 @@
+---
+
+- hosts: localhost
+  vars_files:
+    - ./ansible-vault.yml
+  vars:
+    current_dir: /home/srj_b/students-project-2018/ansible  
+  become: yes
+  become_method: sudo
+  
+  tasks:
+    - name: install ecosystem
+      docker_service:
+        project_name: students-project-2018
+        recreate: always
+        definition:
+          version: "3"
+
+          services:
+
+            db:
+              image: postgres
+              container_name: database
+              restart: always
+              environment:
+                POSTGRES_DB: greetings
+                POSTGRES_USER: "{{ postgres_user }}"
+                POSTGRES_PASSWORD: "{{ postgres_password }}"
+              ports:
+                - 5432:5432
+
+            py_app:
+              build: "{{ current_dir }}/.."
+              restart: always
+              container_name: my_py_app
+              depends_on:
+                - db
+              environment:
+                DB_URL: "postgresql://{{ postgres_user }}:{{ postgres_password }}@database:5432/greetings"
+              ports:
+                - 5000:5000
+
+            web:
+              image: nginx
+              restart: always
+              container_name: nginx-proxy
+              depends_on:
+                - py_app
+              ports:
+                - 80:80
+              volumes: 
+                - "{{ current_dir }}/../nginx_conf:/etc/nginx/conf.d/nginx_conf"

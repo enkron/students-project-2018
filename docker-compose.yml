@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+
+  db:
+    image: postgres
+    container_name: database
+    restart: always
+    environment:
+       POSTGRES_DB: greetings
+       POSTGRES_USER: user1
+       POSTGRES_PASSWORD: use1
+    ports:
+      - 5432:5432
+
+  py_app:
+    build: .
+    restart: always
+    container_name: my_py_app
+    depends_on:
+      - db
+    environment:
+      DB_URL: postgresql://user1:use1@database:5432/greetings
+    ports:
+      - 5000:5000
+
+  web:
+    image: nginx
+    restart: always
+    container_name: nginx-proxy
+    depends_on:
+      - py_app
+    ports:
+      - 80:80
+    volumes: 
+      - ./nginx_conf:/etc/nginx/conf.d/nginx_conf

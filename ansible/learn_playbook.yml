@@ -1,0 +1,22 @@
+---
+
+- name: testing playbook
+  hosts: localhost
+  tasks:
+    - name: install htop
+      yum: name=htop state=present update_cache=yes
+    # после указания имени задачи следует методом которым будет выполняться команда - в данном случае нам нужна утилита yum,
+    # поэтому после директивы - name вписываем yum     
+      become: yes
+    # правда для использования команды sudo необходимо ввести пароль поэтому просто так сценарий не сработает, поэтому при запуске
+    # необхоидмо указать ключ --ask-become-pass 
+      become_method: sudo
+    # команда become позволяет запускать команды от имени рута (если конечно у пользователья который ее запускает есть привелегии
+    # что бы работать под  sudo), если надо просто запустить команду от другого пользователя - используется команда
+    # become_user: <username>
+
+    - name: remove htop
+      yum: name=htop state=absent
+      become: yes
+      become_method: sudo
+  
